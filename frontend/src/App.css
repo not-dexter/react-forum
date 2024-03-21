@@ -1,0 +1,270 @@
+.App {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #282c34;
+}
+
+.App-logo {
+  height: 8vmin;
+  float: left;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #191b20;
+  border-bottom: solid #61dafb 2px;
+  position: absolute;
+  display: block;
+  width: 100%;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.App-nav {
+  float: right;
+  margin: auto;
+  margin-top: 5px;
+  padding-left: 30px;
+  padding-right: 10px;
+  list-style: none;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.app-nav ul {
+  display: inline;
+}
+
+.App-link {
+  color: white;
+}
+
+.App-content {
+  position: absolute;
+  top: 8.3%;
+  left: 15%;
+  width: 70%;
+  height: auto;
+  background-color: #191b20;
+  border-left: solid #61dafb91 2px;
+  border-right: solid #61dafb91 2px;
+  box-shadow: 0px 0px 73px 41px rgba(0, 0, 0, 0.4);
+  color: white;
+  z-index: 1;
+
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.Content-header {
+  display: inline-flex;
+  top: 100%;
+  width: 100%;
+  height: 70px;
+  border-bottom: solid #61dafb 2px;
+  font-weight: 500;
+  font-size: 24px;
+  justify-content: space-between;
+
+  .buttons {
+    float: right;
+  }
+
+  button {
+    color: white;
+    font-weight: 500;
+    font-size: 24px;
+    margin-right: 15px;
+    width: 45px;
+    height: 45px;
+    background-color: #191b20;
+    border: solid #61dafb 2px;
+    border-radius: 10px;
+    transition: all .2s ease-in-out;
+  }
+
+
+  button:hover {
+    background-color: #282c34;
+    cursor: pointer;
+  }
+
+
+}
+.post-button {
+  background-color: #191b20
+}
+.post-button:hover {
+  background-color: #282c34;
+}
+
+table {
+  width: 100%;
+  font-size: 25px;
+  border-collapse: collapse;
+}
+
+
+
+tr {
+  border-bottom: solid #61dafb91 1px;
+  text-align: center;
+  height: 100px;
+}
+
+
+.dropdown {
+  padding-left: 10px;
+  width: auto;
+  border-radius: 10px;
+  color: white;
+  z-index: 9;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.dropdown-header {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-body {
+  padding: 5px;
+  margin-top: 10px;
+  display: none;
+  background-color: #282c34a4;
+  border-radius: 10px;
+  border: solid #61dafba9 2px;
+}
+
+.dropdown-body.open {
+  display: block;
+}
+
+.dropdown-item {
+  padding: 10px;
+}
+
+.dropdown-item:hover {
+  cursor: pointer;
+}
+
+.dropdown-item-dot {
+  opacity: 0;
+  color: white;
+  transition: all .2s ease-in-out;
+}
+
+.dropdown-item-dot.selected {
+  opacity: 1;
+}
+
+
+.icon {
+  font-size: 25px;
+  color: white;
+  transform: rotate(0deg);
+  transition: all .2s ease-in-out;
+}
+
+.icon.open {
+  transform: rotate(90deg);
+}
+
+.App-link::before {
+  transform-origin: 50% 100%;
+  transition: clip-path 0.3s, transform 0.3s cubic-bezier(0.2, 1, 0.8, 1);
+  clip-path: polygon(0% 0%, 0% 100%, 0 100%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%, 100% 100%, 100% 0%);
+}
+
+.App-link:hover::before {
+  transform: translate3d(0, 2px, 0) scale3d(1.08, 3, 1);
+  clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 50% 0, 50% 0, 50% 100%, 50% 100%, 0 100%, 100% 100%, 100% 0%);
+}
+
+.App-link span {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.2, 1, 0.8, 1);
+}
+
+.App-link:hover span {
+  transform: translate3d(0, -2px, 0);
+}
+
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: larger;
+
+  input {
+    background-color: #191b20;
+    border: none;
+    outline: none;
+    border-bottom: solid #61dafb 1px;
+    font-size: larger;
+    color: white;
+    padding-bottom: 5px;
+  }
+
+  input::placeholder {
+    color: rgba(255, 255, 255, 0.404);
+  }
+
+
+
+  textarea {
+    background-color: #191b20;
+    border: none;
+    outline: none;
+    border-bottom: solid #61dafb 1px;
+    font-size: larger;
+    color: white;
+    padding-bottom: 5px;
+    width: 100%;
+  }
+
+
+  button {
+    margin-top: 20px;
+    font-size: larger;
+    width: 100%;
+    height: 40px;
+    color: white;
+    background-color: #191b20;
+    border: solid #61dafb 1px;
+    cursor: pointer;
+    transition: all .15s;
+  }
+
+  button:hover {
+    background-color: #61dafb96;
+  }
+}
