@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable eqeqeq */
 import { Outlet, Link } from "react-router-dom";
-import logo from '../logo.svg';
+//import logo from '../logo.svg';
 import { useNavigate } from 'react-router-dom';
 
 function AppNav({ loggedIn }) {
@@ -30,8 +30,8 @@ const Layout = (props) => {
     return (
         <>
             <header className="App-header">
-                <img src={logo} className='App-logo' alt='Logo'></img>
-                <h1 style={{ display: "inline", fontSize: "50px", cursor: "pointer" }} onClick={() => { navigate("/") }}>React forum</h1>
+                {/*<img src={logo} className='App-logo' alt='Logo'></img>*/}
+                <h1 style={{ paddingLeft: "20px", display: "inline", fontSize: "calc(30px + 2vmin)", cursor: "pointer" }} onClick={() => { navigate("/") }}>React forum</h1>
                 <AppNav loggedIn={props.loggedIn} />
             </header>
 

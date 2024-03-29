@@ -7,7 +7,16 @@ import myJson from "./posts.json";
 import search from './magnifying-glass-3-32.png';
 
 const data = [{ id: 0, label: "Newest" }, { id: 1, label: "Oldest" }];
+/*const fetchedObj = fetch('https://raw.githubusercontent.com/not-dexter/react-forum/main/src/routes/posts.json?token=GHSAT0AAAAAACP5QKCEURJHVZ7PNXPD4ALMZQGZDEA', {
+    method: 'GET'
+  }).then((response) => {
+    response.json().then((jsonResponse) => {
+      console.log(jsonResponse)
+    })
+})*/
 const obj = JSON.parse(JSON.stringify(myJson));
+
+
 
 const Dropdown = (props) => {
     const [isOpen, setOpen] = useState(false);
