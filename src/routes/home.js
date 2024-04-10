@@ -1,13 +1,13 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable eqeqeq */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { memo } from "react";
 import { useNavigate } from 'react-router-dom';
-import myJson from "./posts.json";
+//import myJson from "./posts.json";
 import search from './magnifying-glass-3-32.png';
 
 const data = [{ id: 0, label: "Newest" }, { id: 1, label: "Oldest" }];
-const obj = JSON.parse(JSON.stringify(myJson));
+//const obj = JSON.parse(JSON.stringify(myJson));
 
 const Dropdown = (props) => {
     const [isOpen, setOpen] = useState(false);
@@ -102,14 +102,26 @@ const CreatePost = memo(function CreatePost({ loggedIn }) {
 
 const Home = (props) => {
     const [order, setOrder] = useState(0);
+    const [items, setItems] = useState();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        fetch(process.env.REACT_APP_API_URL + "posts").then((response) => {
+            console.log(response);
+            response.json().then((data) => {
+                console.log(data);
+                setItems(data);
+            });
+        })
+    }, [])
+
     var count = 0;
-
-    if (order == 1)
-        count = 0;
-    else
-        count = Object.keys(obj["posts"]).length - 1;
-
+    if (items) {
+        if (order == 1)
+            count = 0;
+        else
+            count = Object.keys(items["posts"]).length - 1;
+    }
     return (
         <div className="App-content">
 
@@ -123,13 +135,15 @@ const Home = (props) => {
 
             <table id="posts">
                 <tbody>
-                    {Object.keys(obj["posts"]).map((post) => ( //kinda gross but it'll do
+                    {items ? Object.keys(items["posts"]).map((post) => ( //kinda gross but it'll do
                         <tr key={post} style={{ cursor: "pointer" }} onClick={() => { navigate("/post/" + (Math.abs(count - post))) }}>
                             <td>{(Math.abs(count - post))}</td>
-                            <td>{obj["posts"][(Math.abs(count - post))].title}</td>
-                            <td>{obj["posts"][(Math.abs(count - post))].author}</td>
+                            <td>{items["posts"][(Math.abs(count - post))].title}</td>
+                            <td>{items["posts"][(Math.abs(count - post))].author}</td>
                         </tr>
-                    ))}
+                    )) :
+                        <h3 style={{textAlign: "center"}}>loading</h3>
+                    }
                 </tbody>
             </table>
         </div>

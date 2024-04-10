@@ -24,8 +24,23 @@ function App() {
       return;
     }
     else {
-      setLoggedIn(true);
-      setUser(getCookie('Session'))
+      fetch(process.env.REACT_APP_API_URL + "jwt", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ token: getCookie('Session')})
+    }).then(res => res.json()).then(res => {
+      if(res.auth === true) {
+        setLoggedIn(true);
+        setUser(res.username)
+      }
+      else {
+        setLoggedIn(false);
+        setUser("");
+      }
+    });
+      
     }
   }, []);
 

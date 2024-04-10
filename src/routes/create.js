@@ -1,12 +1,10 @@
 /* eslint-disable no-restricted-globals */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { memo } from "react";
-import myJson from "./posts.json";
-const obj = JSON.parse(JSON.stringify(myJson));
 
-function appendToJson(author, title, message) {
+function appendToJson(obj, author, title, message) {
     obj["posts"].push({
-
         "title": title,
         "author": author,
         "content": message,
@@ -15,26 +13,38 @@ function appendToJson(author, title, message) {
     return obj;
 }
 
-async function AppendPosts(json) { //TODO: create backend to handle post
-    return fetch(process.env.API_URL, {
+function AppendPosts(json, navigate) { 
+    fetch(process.env.REACT_APP_API_URL + "newpost", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(json)
+    }).then((res) => {
+        if (res.status === 200)
+            navigate("/");
+        else
+            alert("Error, try again later.");
+
     })
-        .then(data => data.json())
 }
 
 const CreatePost = (props) => {
     const [title, setTitle] = useState();
     const [message, setMessage] = useState();
+    const navigate = useNavigate()
+    useEffect(() => {
 
-    const handleSubmit = async e => {
+    }, [])
+    const handleSubmit = e => {
         e.preventDefault();
+        let posts = fetch(process.env.REACT_APP_API_URL + "posts")
 
-        //setToken(token);
-        AppendPosts(appendToJson(props.user, title, message)); //Should work based off of console.log results
+        posts.then((obj) => {
+            return obj.json()
+        }).then((obj) => {
+            AppendPosts(appendToJson(obj, props.user, title, message), navigate) //Should work based off of console.log results
+        });
     }
 
     return (
