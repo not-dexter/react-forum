@@ -106,7 +106,7 @@ const Home = (props) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(process.env.REACT_APP_API_URL + "posts").then((response) => {
+        fetch(process.env.REACT_APP_API_URL + "/posts").then((response) => {
             console.log(response);
             response.json().then((data) => {
                 console.log(data);

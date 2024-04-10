@@ -14,7 +14,7 @@ function appendToJson(obj, author, title, message) {
 }
 
 function AppendPosts(json, navigate) { 
-    fetch(process.env.REACT_APP_API_URL + "newpost", {
+    fetch(process.env.REACT_APP_API_URL + "/newpost", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -38,7 +38,7 @@ const CreatePost = (props) => {
     }, [])
     const handleSubmit = e => {
         e.preventDefault();
-        let posts = fetch(process.env.REACT_APP_API_URL + "posts")
+        let posts = fetch(process.env.REACT_APP_API_URL + "/posts")
 
         posts.then((obj) => {
             return obj.json()

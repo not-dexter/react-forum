@@ -13,7 +13,7 @@ const Comment = (props) => {
     const handleSubmit = async e => {
         e.preventDefault();
 
-        fetch(process.env.REACT_APP_API_URL + "comment", {
+        fetch(process.env.REACT_APP_API_URL + "/comment", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ const Post = (props) => {
     const postID = useParams();
     const [obj, setObj] = useState();
     useEffect(() => {
-        fetch(process.env.REACT_APP_API_URL + "posts").then((response) => {
+        fetch(process.env.REACT_APP_API_URL + "/posts").then((response) => {
             console.log(response);
             response.json().then((data) => {
                 console.log(data);

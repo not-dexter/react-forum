@@ -24,7 +24,7 @@ function App() {
       return;
     }
     else {
-      fetch(process.env.REACT_APP_API_URL + "jwt", {
+      fetch(process.env.REACT_APP_API_URL + "/jwt", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

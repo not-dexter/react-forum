@@ -11,7 +11,7 @@ const Login = (props) => {
     const handleSubmit = async e => {
         e.preventDefault();
 
-        fetch(process.env.REACT_APP_API_URL + "auth", {
+        fetch(process.env.REACT_APP_API_URL + "/auth", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
